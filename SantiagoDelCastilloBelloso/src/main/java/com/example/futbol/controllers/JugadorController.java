@@ -38,7 +38,7 @@ public class JugadorController {
 	public String agregarJugador(Model model) {
 		log.info("[agregarJugador:]");
 		model.addAttribute("jugador", new Jugador());
-        model.addAttribute("posicion", Arrays.asList(Posicion.values()));
+        model.addAttribute("posiciones", Arrays.asList(Posicion.values()));
 		
 		return "agregarJugador";
 	}
@@ -46,6 +46,7 @@ public class JugadorController {
 	
 	@PostMapping
     public String guardarJugador(@ModelAttribute Jugador jugador) {
+		log.info("[guardarJugador:]");
         servicio.guardarJugador(jugador);
         return "redirect:/jugadores";
     }
