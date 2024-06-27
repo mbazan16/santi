@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{agregarJugador.title}"></title>
+</head>
+<body>
+    <h1 th:text="#{agregarJugador.h1}"></h1>
+    <form th:action="@{/jugadores}" th:object="${jugador}" method="post">
+        <label for="nombre" th:text="#{agregarJugador.nombre}"></label>
+        <input type="text" id="nombre" th:field="*{nombre}"/>
+        <br/>
+        <label for="posicion" th:text="#{agregarJugador.posicion}"></label>
+        <select id="posicion" th:field="*{posicion}">
+            <option th:each="posicion : ${posiciones}" th:value="${posicion}" th:text="${posicion}"></option>
+        </select>
+        <br/>
+        <button type="submit" th:text="#{agregarJugador.boton}"></button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{jugadores.title}"></title>
+</head>
+<body>
+    <h1 th:text="#{jugadores.h1}"></h1>
+    <table>
+        <tr>
+            <th th:text="#{jugadores.nombre}"></th>
+            <th th:text="#{jugadores.posicion}"></th>
+        </tr>
+        <tr th:each="jugador : ${jugadores}">
+            <td th:text="${jugador.nombre}"></td>
+            <td th:text="${jugador.posicion}"></td>
+        </tr>
+    </table>
+    
+    <a th:href="@{/jugadores/agregarJugador}" 
+    	th:text="#{jugadores.agregar}"></a>
+</body>
+</html>
