@@ -20,6 +20,12 @@ public class Jugador {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Jugador(Long id, String nombre, Posicion posicion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.posicion = posicion;
+    }
 
 	public Long getId() {
 		return id;
