@@ -27,7 +27,7 @@ public class JugadorController {
 	private JugadorServicio servicio;
 	
 	@GetMapping
-	public String sacarJugadores(Model model) {
+	public String sacarJugadores(Model model) throws NoJugadorException {
 		log.info("[sacarJugadores:]");
 		model.addAttribute("jugadores", servicio.listaJugadores());
 		return "jugadores";

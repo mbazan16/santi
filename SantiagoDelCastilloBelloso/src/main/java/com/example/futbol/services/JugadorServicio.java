@@ -18,9 +18,15 @@ public class JugadorServicio {
 	@Autowired
 	private JugadorRepository repositorio;
 	
-	public List<Jugador> listaJugadores(){
+	public List<Jugador> listaJugadores() throws NoJugadorException{
 		log.info("[listaJugadores:]");
-		return repositorio.listaJugadores();
+		try {
+	        log.info("[listaJugadores:]");
+	        return repositorio.listaJugadores();
+	    } catch (Exception e) {
+	        log.error("Error al obtener la lista de jugadores", e);
+	        throw new NoJugadorException("Error al obtener la lista de jugadores: " + e.getMessage());
+	    }
 	}
 	
 	public Jugador guardarJugador(Jugador jugador) throws NoJugadorException {
