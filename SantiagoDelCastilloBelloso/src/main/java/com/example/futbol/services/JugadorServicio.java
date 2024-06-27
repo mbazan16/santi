@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.futbol.entities.Jugador;
+import com.example.futbol.exceptions.NoJugadorException;
 import com.example.futbol.repositories.JugadorRepository;
 
 @Service
@@ -22,8 +23,11 @@ public class JugadorServicio {
 		return repositorio.listaJugadores();
 	}
 	
-	public Jugador guardarJugador(Jugador jugador) {
+	public Jugador guardarJugador(Jugador jugador) throws NoJugadorException {
 		log.info("[guardarJugador:]");
+		if (jugador == null || jugador.getNombre() == null || jugador.getNombre().isEmpty()) {
+            throw new NoJugadorException("El jugador no se ha podido guardar");
+        }
 		return repositorio.save(jugador);
 		
 	}

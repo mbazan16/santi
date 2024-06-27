@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.futbol.entities.Jugador;
 import com.example.futbol.entities.Posicion;
+import com.example.futbol.exceptions.NoJugadorException;
 import com.example.futbol.services.JugadorServicio;
 
 @Controller
@@ -29,7 +30,6 @@ public class JugadorController {
 	public String sacarJugadores(Model model) {
 		log.info("[sacarJugadores:]");
 		model.addAttribute("jugadores", servicio.listaJugadores());
-		
 		return "jugadores";
 	}
 	
@@ -45,10 +45,16 @@ public class JugadorController {
 	
 	
 	@PostMapping
-    public String guardarJugador(@ModelAttribute Jugador jugador) {
+    public String guardarJugador(@ModelAttribute Jugador jugador, Model model) throws NoJugadorException {
 		log.info("[guardarJugador:]");
-        servicio.guardarJugador(jugador);
-        return "redirect:/jugadores";
+		try {
+            servicio.guardarJugador(jugador);
+            return "redirect:/jugadores";
+        } catch (NoJugadorException nje) {
+            log.error("Error al guardar jugador: " + nje.getMessage());
+            model.addAttribute("error", nje.getMessage());
+            return "error";
+        }
     }
 	
 }

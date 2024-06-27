@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{error.title}"></title>
+</head>
+<body>
+    <h1 th:text="#{error.h1}"></h1>
+    <p th:text="${error}"></p>
+    
+    <a th:href="@{/jugadores/agregarJugador}" 
+    	th:text="#{error.agregar}"></a>
+</body>
+</html>
