@@ -14,7 +14,7 @@ public class Jugador {
 	
 	private String nombre;
 	
-	private Posicion tipo;
+	private Posicion posicion;
 
 	public Jugador() {
 		super();
@@ -37,13 +37,12 @@ public class Jugador {
 		this.nombre = nombre;
 	}
 
-	public Posicion getTipo() {
-		return tipo;
+	public Posicion getPosicion() {
+		return posicion;
 	}
 
-	public void setTipo(Posicion tipo) {
-		this.tipo = tipo;
+	public void setPosicion(Posicion posicion) {
+		this.posicion = posicion;
 	}
-	
-	
+
 }
